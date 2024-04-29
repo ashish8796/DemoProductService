@@ -13,4 +13,17 @@ public class FakeStoreProductResponseDTO {
     private String category;
     private String imageURL;
     private FakeStoreProductRatingDTO rating;
+
+    @Override
+    public String toString() {
+        return "FakeStoreProductResponseDTO{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", price=" + price +
+                ", description='" + description + '\'' +
+                ", category='" + category + '\'' +
+                ", imageURL='" + imageURL + '\'' +
+                ", rating=" + rating +
+                '}';
+    }
 }
