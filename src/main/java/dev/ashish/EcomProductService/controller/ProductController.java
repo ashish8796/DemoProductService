@@ -29,8 +29,6 @@ public class ProductController {
 
     @PutMapping("/{id}")
     public ResponseEntity updateProduct(@PathVariable("id") int id, @RequestBody FakeStoreRequestDTO fakeStoreRequestDTO) {
-        System.out.println(id);
-        System.out.println(fakeStoreRequestDTO.toString());
         FakeStoreProductResponseDTO product = productService.updateProduct(id, fakeStoreRequestDTO);
         return ResponseEntity.ok(product);
     }

@@ -1,5 +1,6 @@
 package dev.ashish.EcomProductService.client;
 
+import dev.ashish.EcomProductService.dto.FakeStoreCartResponseDTO;
 import dev.ashish.EcomProductService.dto.FakeStoreProductResponseDTO;
 import dev.ashish.EcomProductService.dto.FakeStoreRequestDTO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,8 @@ public class FakeStoreClient {
     private String fakeStoreAPIBaseurl;
     @Value("${fakestore.api.product.path}")
     private String fakeStoreAPIProductPath;
+    @Value("${fakestore.api.cart.path}")
+    private String fakeStoreAPICartPath;
 
     public List<FakeStoreProductResponseDTO> getAllProducts() {
         String url = fakeStoreAPIBaseurl.concat(fakeStoreAPIProductPath);
@@ -59,5 +62,13 @@ public class FakeStoreClient {
 
         ResponseEntity<FakeStoreProductResponseDTO> product =  restTemplate.postForEntity(url, fakeStoreRequestDTO, FakeStoreProductResponseDTO.class);
         return product.getBody();
+    }
+
+    public FakeStoreCartResponseDTO getCartById(int cartId) {
+        String url = fakeStoreAPIBaseurl.concat(fakeStoreAPICartPath +"/" + cartId);
+        RestTemplate restTemplate = restTemplateBuilder.build();
+
+        ResponseEntity<FakeStoreCartResponseDTO> cart = restTemplate.getForEntity(url, FakeStoreCartResponseDTO.class);
+        return cart.getBody();
     }
 }
