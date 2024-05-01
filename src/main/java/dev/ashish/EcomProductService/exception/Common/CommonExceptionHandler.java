@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 
 @ControllerAdvice
 public class CommonExceptionHandler {
-    @ExceptionHandler(InvalidRequestException.class)
-    public ResponseEntity handleInvalidRequestException (InvalidRequestException ex) {
-        ExceptionResponseDTO responseDTO = new ExceptionResponseDTO(ex.getMessage(), 400);
-        return new ResponseEntity<>(responseDTO, HttpStatus.BAD_REQUEST);
-    }
+//    @ExceptionHandler(InvalidRequestException.class)
+//    public ResponseEntity handleInvalidRequestException (InvalidRequestException ex) {
+//        ExceptionResponseDTO responseDTO = new ExceptionResponseDTO(ex.getMessage(), 400);
+//        return new ResponseEntity<>(responseDTO, HttpStatus.BAD_REQUEST);
+//    }
 }

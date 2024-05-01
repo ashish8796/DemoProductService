@@ -1,17 +1,17 @@
 package dev.ashish.EcomProductService.service;
 
-import dev.ashish.EcomProductService.dto.FakeStoreRequestDTO;
 import dev.ashish.EcomProductService.dto.ProductRequestDTO;
-import dev.ashish.EcomProductService.dto.FakeStoreProductResponseDTO;
+import dev.ashish.EcomProductService.dto.ProductResponseDTO;
 import dev.ashish.EcomProductService.entity.Product;
 
 import java.util.List;
+import java.util.UUID;
 
 public interface ProductService {
-    List<FakeStoreProductResponseDTO> getAllProduct();
-    FakeStoreProductResponseDTO getProductById(int productId);
-    FakeStoreProductResponseDTO updateProduct(int productId, FakeStoreRequestDTO updatedProduct);
-    boolean deleteProduct(int productId);
+    List<ProductResponseDTO> getAllProduct();
+    ProductResponseDTO getProductById(UUID productId);
+    ProductResponseDTO updateProduct(UUID productId, ProductRequestDTO requestDTO);
+    boolean deleteProduct(UUID productId);
 
-    FakeStoreProductResponseDTO createProduct(FakeStoreRequestDTO fakeStoreRequestDTO);
+    ProductResponseDTO createProduct(ProductRequestDTO requestDTO);
 }
