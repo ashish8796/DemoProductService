@@ -62,4 +62,20 @@ public class ProductServiceImpl implements ProductService {
         product = productRepository.save(product);
         return ProductEntityDTOMapper.convertProductEntityToProductResponseDTO(product);
     }
+
+    public ProductResponseDTO getProductByName(String name) {
+        return ProductEntityDTOMapper.convertProductEntityToProductResponseDTO(productRepository.findByTitle(name));
+    }
+
+    public List<ProductResponseDTO> getProductsByPriceRange(double minPrice, double maxPrice)
+    {
+        List<Product> products = productRepository.findByPriceBetween(minPrice, maxPrice);
+        List<ProductResponseDTO> responseDTOS = new ArrayList<>();
+
+        for(Product product : products) {
+            responseDTOS.add(ProductEntityDTOMapper.convertProductEntityToProductResponseDTO(product));
+        }
+
+        return responseDTOS;
+    }
 }
