@@ -8,10 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class FakeStoreCartServiceImpl {
+public class FakeStoreCartServiceImpl implements CartService{
     @Autowired
     FakeStoreClient fakeStoreClient;
-
+    @Override
     public FakeStoreCartResponseDTO getCartById(int cartId) {
         if(cartId < 1)
             throw new InvalidRequestException("Cart id is not valid.");

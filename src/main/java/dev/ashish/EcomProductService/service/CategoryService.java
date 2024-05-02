@@ -2,6 +2,7 @@ package dev.ashish.EcomProductService.service;
 
 import dev.ashish.EcomProductService.dto.categoryDTOs.CategoryRequestDTO;
 import dev.ashish.EcomProductService.dto.categoryDTOs.CategoryResponseDTO;
+import dev.ashish.EcomProductService.entity.Category;
 
 import java.util.List;
 import java.util.UUID;
@@ -12,4 +13,5 @@ public interface CategoryService {
     CategoryResponseDTO updateCategoryName(UUID categoryId, CategoryRequestDTO requestDTO);
     Boolean deleteCategory(UUID categoryId);
     CategoryResponseDTO createCategory(CategoryRequestDTO requestDTO);
+    double getTotalPriceOfCategory(UUID categoryId);
 }
