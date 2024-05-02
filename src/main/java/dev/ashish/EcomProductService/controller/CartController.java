@@ -1,6 +1,6 @@
 package dev.ashish.EcomProductService.controller;
 
-import dev.ashish.EcomProductService.dto.FakeStoreCartResponseDTO;
+import dev.ashish.EcomProductService.dto.fakeStoreDTOs.FakeStoreCartResponseDTO;
 import dev.ashish.EcomProductService.service.CartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

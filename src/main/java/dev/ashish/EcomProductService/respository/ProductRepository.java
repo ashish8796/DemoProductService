@@ -1,6 +1,5 @@
 package dev.ashish.EcomProductService.respository;
 
-import dev.ashish.EcomProductService.dto.ProductResponseDTO;
 import dev.ashish.EcomProductService.entity.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

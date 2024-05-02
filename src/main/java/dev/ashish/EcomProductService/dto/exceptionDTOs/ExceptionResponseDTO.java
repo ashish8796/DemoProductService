@@ -1,4 +1,4 @@
-package dev.ashish.EcomProductService.dto;
+package dev.ashish.EcomProductService.dto.exceptionDTOs;
 
 import lombok.Getter;
 import lombok.Setter;

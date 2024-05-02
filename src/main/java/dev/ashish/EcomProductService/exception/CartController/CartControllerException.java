@@ -1,7 +1,7 @@
 package dev.ashish.EcomProductService.exception.CartController;
 
 import dev.ashish.EcomProductService.controller.CartController;
-import dev.ashish.EcomProductService.dto.ExceptionResponseDTO;
+import dev.ashish.EcomProductService.dto.exceptionDTOs.ExceptionResponseDTO;
 import dev.ashish.EcomProductService.exception.Common.InvalidRequestException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

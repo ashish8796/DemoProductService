@@ -1,11 +1,8 @@
 package dev.ashish.EcomProductService.service;
 
 import dev.ashish.EcomProductService.client.FakeStoreClient;
-import dev.ashish.EcomProductService.dto.FakeStoreProductResponseDTO;
-import dev.ashish.EcomProductService.dto.FakeStoreRequestDTO;
-import dev.ashish.EcomProductService.dto.ProductRequestDTO;
-import dev.ashish.EcomProductService.dto.ProductResponseDTO;
-import dev.ashish.EcomProductService.entity.Product;
+import dev.ashish.EcomProductService.dto.fakeStoreDTOs.FakeStoreProductResponseDTO;
+import dev.ashish.EcomProductService.dto.fakeStoreDTOs.FakeStoreRequestDTO;
 import dev.ashish.EcomProductService.exception.Common.InvalidRequestException;
 import dev.ashish.EcomProductService.exception.ProductController.NoProductFoundException;
 import dev.ashish.EcomProductService.exception.ProductController.ProductNotFoundException;

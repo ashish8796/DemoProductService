@@ -1,8 +1,7 @@
 package dev.ashish.EcomProductService.service;
 
-import dev.ashish.EcomProductService.dto.ProductRequestDTO;
-import dev.ashish.EcomProductService.dto.ProductResponseDTO;
-import dev.ashish.EcomProductService.entity.Product;
+import dev.ashish.EcomProductService.dto.productDTOs.ProductRequestDTO;
+import dev.ashish.EcomProductService.dto.productDTOs.ProductResponseDTO;
 
 import java.util.List;
 import java.util.UUID;

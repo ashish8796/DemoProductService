@@ -1,5 +1,6 @@
-package dev.ashish.EcomProductService.dto;
+package dev.ashish.EcomProductService.dto.productDTOs;
 
+import dev.ashish.EcomProductService.entity.Category;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,7 +13,7 @@ public class ProductResponseDTO {
     private String title;
     private double price;
     private String description;
-    private String category;
+    private Category category;
     private String imageURL;
     private double rating;
 }

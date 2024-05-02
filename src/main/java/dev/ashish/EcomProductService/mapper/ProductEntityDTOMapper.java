@@ -1,7 +1,7 @@
 package dev.ashish.EcomProductService.mapper;
 
-import dev.ashish.EcomProductService.dto.ProductRequestDTO;
-import dev.ashish.EcomProductService.dto.ProductResponseDTO;
+import dev.ashish.EcomProductService.dto.productDTOs.ProductRequestDTO;
+import dev.ashish.EcomProductService.dto.productDTOs.ProductResponseDTO;
 import dev.ashish.EcomProductService.entity.Product;
 
 public class ProductEntityDTOMapper {
@@ -24,7 +24,6 @@ public class ProductEntityDTOMapper {
 
         product.setImageURL(requestDTO.getImageURL());
         product.setTitle(requestDTO.getTitle());
-        product.setCategory(requestDTO.getCategory());
         product.setDescription(requestDTO.getDescription());
         product.setPrice(requestDTO.getPrice());
         product.setRating(requestDTO.getRating());

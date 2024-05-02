@@ -1,8 +1,7 @@
 package dev.ashish.EcomProductService.service;
 
 
-import dev.ashish.EcomProductService.dto.FakeStoreCartResponseDTO;
-import org.springframework.stereotype.Service;
+import dev.ashish.EcomProductService.dto.fakeStoreDTOs.FakeStoreCartResponseDTO;
 
 
 public interface CartService {

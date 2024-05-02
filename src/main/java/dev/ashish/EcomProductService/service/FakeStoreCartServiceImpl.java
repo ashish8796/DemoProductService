@@ -1,17 +1,17 @@
 package dev.ashish.EcomProductService.service;
 
 import dev.ashish.EcomProductService.client.FakeStoreClient;
-import dev.ashish.EcomProductService.dto.FakeStoreCartResponseDTO;
+import dev.ashish.EcomProductService.dto.fakeStoreDTOs.FakeStoreCartResponseDTO;
 import dev.ashish.EcomProductService.exception.CartController.CartNotFoundException;
 import dev.ashish.EcomProductService.exception.Common.InvalidRequestException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class FakeStoreCartServiceImpl implements CartService{
+public class FakeStoreCartServiceImpl {
     @Autowired
     FakeStoreClient fakeStoreClient;
-    @Override
+
     public FakeStoreCartResponseDTO getCartById(int cartId) {
         if(cartId < 1)
             throw new InvalidRequestException("Cart id is not valid.");

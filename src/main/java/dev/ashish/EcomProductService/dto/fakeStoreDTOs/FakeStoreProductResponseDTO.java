@@ -1,5 +1,6 @@
-package dev.ashish.EcomProductService.dto;
+package dev.ashish.EcomProductService.dto.fakeStoreDTOs;
 
+import dev.ashish.EcomProductService.dto.fakeStoreDTOs.FakeStoreProductRatingDTO;
 import lombok.Getter;
 import lombok.Setter;
 

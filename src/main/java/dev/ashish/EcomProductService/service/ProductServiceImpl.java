@@ -1,10 +1,13 @@
 package dev.ashish.EcomProductService.service;
 
-import dev.ashish.EcomProductService.dto.ProductRequestDTO;
-import dev.ashish.EcomProductService.dto.ProductResponseDTO;
+import dev.ashish.EcomProductService.dto.productDTOs.ProductRequestDTO;
+import dev.ashish.EcomProductService.dto.productDTOs.ProductResponseDTO;
+import dev.ashish.EcomProductService.entity.Category;
 import dev.ashish.EcomProductService.entity.Product;
+import dev.ashish.EcomProductService.exception.CategoryController.CategoryNotFoundException;
 import dev.ashish.EcomProductService.exception.ProductController.ProductNotFoundException;
 import dev.ashish.EcomProductService.mapper.ProductEntityDTOMapper;
+import dev.ashish.EcomProductService.respository.CategoryRepository;
 import dev.ashish.EcomProductService.respository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,7 +19,10 @@ import java.util.UUID;
 @Service("ProductService")
 public class ProductServiceImpl implements ProductService {
     @Autowired
-    ProductRepository productRepository;
+    private ProductRepository productRepository;
+    @Autowired
+    private CategoryRepository categoryRepository;
+
     @Override
     public List<ProductResponseDTO> getAllProduct() {
         List<Product> products = productRepository.findAll();
@@ -59,7 +65,13 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public ProductResponseDTO createProduct(ProductRequestDTO requestDTO) {
         Product product = ProductEntityDTOMapper.convertProductRequestDTOToEntity(requestDTO);
+        Category category = categoryRepository.findById(requestDTO.getCategoryId()).orElseThrow(
+                () -> new CategoryNotFoundException("Category is not found with id: " + requestDTO.getCategoryId())
+        );
+
+        product.setCategory(category);
         product = productRepository.save(product);
+
         return ProductEntityDTOMapper.convertProductEntityToProductResponseDTO(product);
     }
 

@@ -1,7 +1,7 @@
 package dev.ashish.EcomProductService.controller;
 
-import dev.ashish.EcomProductService.dto.ProductRequestDTO;
-import dev.ashish.EcomProductService.dto.ProductResponseDTO;
+import dev.ashish.EcomProductService.dto.productDTOs.ProductRequestDTO;
+import dev.ashish.EcomProductService.dto.productDTOs.ProductResponseDTO;
 import dev.ashish.EcomProductService.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -19,32 +19,32 @@ public class ProductController {
     ProductService productService;
 
     @GetMapping
-    public ResponseEntity getAllProducts() {
+    public ResponseEntity<List<ProductResponseDTO>> getAllProducts() {
         List<ProductResponseDTO> allProducts = productService.getAllProduct();
         return ResponseEntity.ok(allProducts);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity getProductById(@PathVariable("id") UUID id) {
+    public ResponseEntity<ProductResponseDTO> getProductById(@PathVariable("id") UUID id) {
         System.out.println(id);
         ProductResponseDTO product = productService.getProductById(id);
         return ResponseEntity.ok(product);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity updateProduct(@PathVariable("id") UUID id, @RequestBody ProductRequestDTO fakeStoreRequestDTO) {
+    public ResponseEntity<ProductResponseDTO> updateProduct(@PathVariable("id") UUID id, @RequestBody ProductRequestDTO fakeStoreRequestDTO) {
         ProductResponseDTO product = productService.updateProduct(id, fakeStoreRequestDTO);
         return ResponseEntity.ok(product);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity deleteProduct(@PathVariable("id") UUID id) {
+    public ResponseEntity<Boolean> deleteProduct(@PathVariable("id") UUID id) {
         boolean isDeleted = productService.deleteProduct(id);
         return ResponseEntity.ok(isDeleted);
     }
 
     @PostMapping
-    public ResponseEntity createProduct(@RequestBody ProductRequestDTO fakeStoreRequestDTO) {
+    public ResponseEntity<ProductResponseDTO> createProduct(@RequestBody ProductRequestDTO fakeStoreRequestDTO) {
         ProductResponseDTO product = productService.createProduct(fakeStoreRequestDTO);
         return ResponseEntity.ok(product);
     }
