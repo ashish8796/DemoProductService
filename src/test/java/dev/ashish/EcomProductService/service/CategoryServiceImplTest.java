@@ -2,6 +2,7 @@ package dev.ashish.EcomProductService.service;
 
 import dev.ashish.EcomProductService.entity.Category;
 import dev.ashish.EcomProductService.entity.Product;
+import dev.ashish.EcomProductService.exception.CategoryController.CategoryNotFoundException;
 import dev.ashish.EcomProductService.respository.CategoryRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -29,6 +30,22 @@ public class CategoryServiceImplTest {
     }
 
     @Test
+    public void testGetTotalPriceOfProductUnderCategoryWithZeroProducts() {
+        //Arrange
+        UUID categoryId = UUID.randomUUID();
+        Category categoryMockData = getCategoryMockDataWithoutProducts();
+        Mockito.when(categoryRepository.findById(categoryId)).thenReturn(Optional.of(categoryMockData));
+
+        //Act
+        double actualCost = categoryService.getTotalPriceOfCategory(categoryId);
+        double expectedCost = 0;
+
+        //Assert
+        Assertions.assertEquals(actualCost, expectedCost);
+        Mockito.verify(categoryRepository).findById(categoryId);
+    }
+
+    @Test
     public void testGetTotalPriceOfProductUnderCategory() {
         //Arrange
         UUID categoryId = UUID.randomUUID();
@@ -41,6 +58,29 @@ public class CategoryServiceImplTest {
 
         //Assert
         Assertions.assertEquals(actualCost, expectedCost);
+        Mockito.verify(categoryRepository).findById(categoryId);
+    }
+
+    @Test
+    public void testCategoryNotFoundExceptionThrown() {
+        //Arrange
+        UUID categoryId = UUID.randomUUID();
+        Mockito.when(categoryRepository.findById(categoryId)).thenReturn(Optional.empty());
+
+        //Act & Assert
+        Assertions.assertThrows(CategoryNotFoundException.class, () -> categoryService.getCategoryById(categoryId));
+        Mockito.verify(categoryRepository).findById(categoryId);
+    }
+
+    private Category getCategoryMockDataWithoutProducts () {
+        Category category = new Category();
+        category.setName("RandomName");
+        category.setId(UUID.randomUUID());
+
+        List<Product> products = new ArrayList<>();
+        category.setProducts(products);
+
+        return category;
     }
 
     private Category getCategoryMockDataWithProducts() {
