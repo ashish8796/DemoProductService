@@ -10,7 +10,7 @@ public class ProductEntityDTOMapper {
 
         responseDTO.setProductId(product.getId());
         responseDTO.setTitle(product.getTitle());
-        responseDTO.setCategory(product.getCategory());
+        responseDTO.setCategory(CategoryEntityDTOMapper.convertEntityToResponseDTO(product.getCategory()));
         responseDTO.setRating(product.getRating());
         responseDTO.setPrice(product.getPrice());
         responseDTO.setImageURL(product.getImageURL());
